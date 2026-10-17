@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PeluqueriaMarilen</string>
+    <string name="title_activity_main">PeluqueriaMarilen</string>
+    <string name="package_name">com.peluqueria.marilen</string>
+    <string name="custom_url_scheme">com.peluqueria.marilen</string>
+</resources>

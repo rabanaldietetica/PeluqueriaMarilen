@@ -1,0 +1,226 @@
+import './style.css'
+
+const wa = 'https://wa.me/5491140607318?text=' + encodeURIComponent('Hola Marilen, vi la página web y quisiera consultar por un turno.')
+const maps = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Traful 3589, Nueva Pompeya, CABA')
+const insta = 'https://www.instagram.com/marilen.peluqueria/'
+const facebook = 'https://www.facebook.com/marilen.moreno.73'
+const cande = 'https://www.instagram.com/nailss.cande01/'
+
+const hairServices = [
+  'Corte dama y caballero','Brushing','Planchado','Peinados de fiesta',
+  'Hidratación capilar','Coloración','Color de raíz','Reflejos con gorro o papel',
+  'Iluminaciones','Balayage','Alisado','Permanente','Shock de keratina',
+  'Botox capilar','Masajes capilares','Cortinas de pelo y extensiones naturales',
+  'Trencitas con turno previo'
+]
+const barberServices = [
+  'Corte','Corte y barba','Corte para jubilados','Marcado y afeitado',
+  'Perfilado de cejas','Claritos para niños','Claritos para adultos'
+]
+const nailServices = [
+  'Esmaltado semipermanente','Semipermanente en pies','Kapping','Soft gel',
+  'Retiro de soft gel','Diseño elaborado'
+]
+const podologyServices = [
+  'Cuidado de uñas','Eliminación de durezas','Tratamiento de callos',
+  'Tratamiento de uñas encarnadas','Uñas engrosadas',
+  'Podología para personas con diabetes','Belleza de pies',
+  'Asesoramiento personalizado'
+]
+
+function serviceList(items: string[]) {
+  return items.map(item => `<li>${item}</li>`).join('')
+}
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Peluquería Marilen, inicio">
+      <span class="brand-monogram">M<span>✦</span></span>
+      <span class="brand-words">PELUQUERÍA<strong>MARILEN</strong><i>Beauty Salon</i></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="nav">
+      <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a>
+      <a href="#tratamientos">Tratamientos</a><a href="#manicuria">Manicuría</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="social-head">
+      <a href="${insta}" target="_blank" rel="noreferrer" aria-label="Instagram">◎</a>
+      <a href="${facebook}" target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
+      <a href="${wa}" target="_blank" rel="noreferrer" aria-label="WhatsApp">◔</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-image"></div>
+      <div class="hero-orbit orbit-a"></div><div class="hero-orbit orbit-b"></div>
+      <span class="sparkle s1">✧</span><span class="sparkle s2">✦</span>
+      <span class="sparkle s3">✧</span><span class="sparkle s4">✦</span>
+      <div class="hero-copy">
+        <p class="eyebrow">UN ESPACIO PARA VOS</p>
+        <h1>Tu belleza,<br><em>nuestra pasión.</em></h1>
+        <div class="title-rule"></div>
+        <p class="hero-description">En Peluquería Marilen creemos que la belleza está en los detalles y que cada persona merece sentirse única. Te invitamos a disfrutar una experiencia de cuidado, estilo y bienestar, con atención personalizada y servicios pensados para realzar lo mejor de vos.</p>
+        <p class="script-line">Belleza <span>·</span> Estilo <span>·</span> Confianza</p>
+        <a class="button button-primary" href="${wa}" target="_blank" rel="noreferrer"><span>◔</span> Reservá tu turno</a>
+      </div>
+      <div class="hero-logo">
+        <img src="/images/logo.png" alt="Logo de Peluquería Marilen" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="logo-fallback"><span>ℳ</span><strong>PELUQUERÍA<br>MARILEN</strong><i>Beauty Salon</i></div>
+      </div>
+      <div class="hero-bottom"><span>✧ Atención personalizada</span><span>✧ Belleza y bienestar</span><span>✧ Tu estilo, tu esencia</span></div>
+    </section>
+
+    <section class="intro section-pad">
+      <p class="eyebrow">BIENVENIDA A TU MOMENTO</p>
+      <h2>Un lugar donde <em>brillás vos</em></h2>
+      <p class="intro-text">Hay momentos en los que todo lo que necesitás es dedicarte un tiempo, renovar tu imagen y volver a mirarte con una sonrisa. En Peluquería Marilen queremos que cada visita sea mucho más que un servicio: queremos que sea tu momento de desconexión, cuidado y renovación.</p>
+      <p class="intro-text">Trabajamos para acompañarte a encontrar el estilo que mejor expresa tu personalidad, escuchando lo que buscás y brindándote asesoramiento personalizado. Desde un cambio de look hasta un tratamiento capilar, desde el cuidado de tus uñas hasta el bienestar de tus pies, cada detalle importa.</p>
+      <div class="signature">Tu belleza merece atención especial.</div>
+    </section>
+
+    <section class="services-section section-pad" id="servicios">
+      <div class="section-heading">
+        <p class="eyebrow">DESCUBRÍ TODO LO QUE TENEMOS PARA VOS</p>
+        <h2>Nuestros <em>servicios</em></h2>
+        <p>Una propuesta integral de belleza y cuidado personal, con opciones para renovar tu imagen, resaltar tus rasgos y sentirte bien de pies a cabeza.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="card-image image-hair"><span>01</span></div>
+          <div class="card-content"><p class="card-kicker">CUIDADO Y ESTILO</p><h3>Peluquería <em>y color</em></h3>
+            <p>Tu cabello habla de vos. Te ayudamos a encontrar el corte, el color y el acabado que acompañen tu estilo. Desde un brushing impecable hasta una transformación llena de luz, cada propuesta comienza por escuchar lo que querés.</p>
+            <ul>${serviceList(hairServices)}</ul>
+            <a class="text-link" href="${wa}" target="_blank" rel="noreferrer">Consultá por tu look <span>↗</span></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="card-image image-barber"><span>02</span></div>
+          <div class="card-content"><p class="card-kicker">PRECISIÓN Y PERSONALIDAD</p><h3>Barbería <em>y cortes</em></h3>
+            <p>Un buen corte marca la diferencia. Ofrecemos opciones para quienes buscan mantener su estilo, renovar su imagen o cuidar cada detalle de su presentación, con atención a los acabados y las preferencias personales.</p>
+            <ul>${serviceList(barberServices)}</ul>
+            <a class="text-link" href="${wa}" target="_blank" rel="noreferrer">Reservá tu corte <span>↗</span></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="card-image image-brows"><span>03</span></div>
+          <div class="card-content"><p class="card-kicker">DETALLES QUE REALZAN</p><h3>Mirada <em>y depilación</em></h3>
+            <p>Los pequeños detalles también cuentan. Cuidamos la armonía de tus rasgos con servicios pensados para acompañar tu imagen y ayudarte a sentirte cómoda con vos misma.</p>
+            <ul><li>Perfilado de cejas</li><li>Depilación facial</li><li>Depilación con cera</li><li>Depilación unisex en general</li></ul>
+            <a class="text-link" href="${wa}" target="_blank" rel="noreferrer">Consultá disponibilidad <span>↗</span></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="card-image image-feet"><span>04</span></div>
+          <div class="card-content"><p class="card-kicker">SALUD Y BIENESTAR</p><h3>Podología <em>y pies</em></h3>
+            <p>El bienestar también empieza por los pies. Esta sección reúne cuidados específicos y atención orientada a mantener la comodidad, la higiene y la salud de tus pies.</p>
+            <ul>${serviceList(podologyServices)}</ul>
+            <a class="text-link" href="${wa}" target="_blank" rel="noreferrer">Consultar por podología <span>↗</span></a>
+          </div>
+        </article>
+      </div>
+      <div class="service-note"><span>✧</span> ¿No sabés qué servicio elegir? Escribinos y te orientamos para encontrar la opción adecuada para vos.</div>
+    </section>
+
+    <section class="treatment-section" id="tratamientos">
+      <div class="treatment-photo"></div>
+      <div class="treatment-copy">
+        <p class="eyebrow">UN MIMO PARA TU CABELLO</p>
+        <h2>Tratamientos <em>capilares</em></h2>
+        <p>Tu cabello merece un cuidado que vaya más allá de lo superficial. Los tratamientos capilares son una oportunidad para mejorar su apariencia, recuperar suavidad y conseguir un acabado que te haga sentir renovada.</p>
+        <div class="treatment-item"><span class="treatment-number">01</span><div><h3>Keratina</h3><p>Un tratamiento orientado a nutrir y mejorar la apariencia de la fibra capilar, aportando suavidad, brillo y una textura más manejable. Ideal para quienes desean un acabado cuidado y un cabello visualmente más uniforme.</p></div></div>
+        <div class="treatment-item"><span class="treatment-number">02</span><div><h3>Botox capilar</h3><p>Una propuesta de cuidado intensivo que busca aportar hidratación, brillo y suavidad. Ayuda a reducir la apariencia del frizz y a conseguir un cabello más sedoso y fácil de peinar, según sus características y el tratamiento aplicado.</p></div></div>
+        <div class="benefit-list"><span>✧ Brillo extremo</span><span>✧ Más suavidad</span><span>✧ Control del frizz</span><span>✧ Cabello más manejable</span></div>
+        <p class="script-line">¡Tu pelo, como lo soñás!</p>
+        <a class="button button-primary" href="${wa}" target="_blank" rel="noreferrer">Consultá por tu tratamiento</a>
+      </div>
+    </section>
+
+    <section class="extras-section section-pad">
+      <div class="section-heading"><p class="eyebrow">PEQUEÑOS DETALLES, GRANDES CAMBIOS</p><h2>Más formas de <em>mimarte</em></h2><p>Completá tu experiencia con servicios que acompañan tu estilo y te ayudan a expresar tu personalidad.</p></div>
+      <div class="extras-grid">
+        <article class="extra-card"><div class="extra-photo extra-extensions"></div><div><h3>Extensiones y trencitas</h3><p>Cortinas de pelo, extensiones de cabello natural y trencitas para sumar longitud, textura o un toque diferente a tu look. Estos servicios se realizan con turno previo para coordinar los detalles.</p><a href="${wa}" target="_blank" rel="noreferrer">Consultar turnos ↗</a></div></article>
+        <article class="extra-card"><div class="extra-photo extra-massage"></div><div><h3>Masajes capilares</h3><p>Regalate una pausa y disfrutá de un momento dedicado al cuidado de tu cabello y a tu bienestar. Consultanos por las opciones disponibles y encontrá el servicio que mejor se adapte a vos.</p><a href="${wa}" target="_blank" rel="noreferrer">Quiero consultar ↗</a></div></article>
+      </div>
+    </section>
+
+    <section class="nails-section" id="manicuria">
+      <div class="nails-photo"></div>
+      <div class="nails-copy">
+        <p class="eyebrow">UN ESPACIO ESPECIAL PARA TUS UÑAS</p>
+        <h2>Manicuría <em>Cande</em></h2>
+        <p>Las uñas son una forma de expresión: pueden ser delicadas, clásicas, modernas o protagonistas. En este espacio vas a encontrar los servicios de manicuría realizados por Cande, para que elijas el acabado que mejor representa tu estilo.</p>
+        <ul class="nail-list">${serviceList(nailServices)}</ul>
+        <p class="nail-note">Para consultar diseños, disponibilidad y turnos de manicuría, podés contactar directamente a Cande a través de su Instagram.</p>
+        <a class="button button-primary" href="${cande}" target="_blank" rel="noreferrer">◎ Ver Instagram de Cande</a>
+        <p class="handle">@nailss.cande01</p>
+      </div>
+    </section>
+
+    <section class="promise-section section-pad">
+      <p class="eyebrow">TU MOMENTO, TU ESENCIA</p>
+      <h2>La belleza está en <em>sentirte bien</em></h2>
+      <p>No se trata solamente de cambiar un peinado, elegir un color o darle un nuevo estilo a tus uñas. Se trata de regalarte tiempo, disfrutar el proceso y salir sintiéndote bien con tu imagen. En Peluquería Marilen queremos acompañarte en cada etapa, con atención cercana, asesoramiento personalizado y una propuesta pensada para vos.</p>
+      <p class="script-line">Porque vos también merecés brillar.</p>
+      <a class="button button-primary" href="${wa}" target="_blank" rel="noreferrer">Hablemos de tu próximo look</a>
+    </section>
+
+    <section class="contact-section section-pad" id="contacto">
+      <div class="contact-copy">
+        <p class="eyebrow">TE ESPERAMOS</p>
+        <h2>Visitá <em>Marilen</em></h2>
+        <p>Tu próximo cambio de look puede empezar con un mensaje. Consultanos por los servicios, los tratamientos y la disponibilidad de turnos. Te ayudaremos a encontrar el momento ideal para dedicarte ese tiempo que merecés.</p>
+        <div class="contact-line"><span>⌖</span><div><small>ENCONTRANOS EN</small><strong>Traful 3589, Nueva Pompeya, CABA</strong></div></div>
+        <div class="contact-line"><span>◔</span><div><small>TURNOS Y CONSULTAS</small><strong>11 4060-7318</strong></div></div>
+        <a class="button button-primary" href="${maps}" target="_blank" rel="noreferrer">Cómo llegar con Google Maps</a>
+        <a class="button button-outline" href="${wa}" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+      </div>
+      <div class="contact-visual">
+        <div class="salon-photo"></div>
+        <div class="contact-quote"><span>“</span><p>Un lugar creado para que te relajes, te cuides y te sientas realmente especial.</p><i>Beauty Salon · Marilen</i></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="#inicio"><span class="brand-monogram">M<span>✦</span></span><span class="brand-words">PELUQUERÍA<strong>MARILEN</strong><i>Beauty Salon</i></span></a>
+    <p class="footer-motto">Porque la belleza también es una forma de bienestar.</p>
+    <div class="footer-social">
+      <a href="${insta}" target="_blank" rel="noreferrer">Instagram de Marilen</a>
+      <a href="${facebook}" target="_blank" rel="noreferrer">Facebook</a>
+      <a href="${cande}" target="_blank" rel="noreferrer">Manicuría Cande</a>
+      <a href="${wa}" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+    <p class="copyright">© ${new Date().getFullYear()} Peluquería Marilen · Nueva Pompeya, CABA</p>
+  </footer>
+  <a class="floating-wa" href="${wa}" target="_blank" rel="noreferrer" aria-label="Reservar por WhatsApp"><span>◔</span><b>Reservá tu turno</b></a>
+`
+
+const menuToggle = document.querySelector<HTMLButtonElement>('.menu-toggle')
+const nav = document.querySelector<HTMLElement>('.nav')
+menuToggle?.addEventListener('click', () => {
+  const open = nav?.classList.toggle('nav-open') ?? false
+  menuToggle.setAttribute('aria-expanded', String(open))
+  menuToggle.textContent = open ? '×' : '☰'
+})
+nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  nav.classList.remove('nav-open')
+  menuToggle?.setAttribute('aria-expanded', 'false')
+  if (menuToggle) menuToggle.textContent = '☰'
+}))
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible')
+      observer.unobserve(entry.target)
+    }
+  })
+}, { threshold: 0.08 })
+document.querySelectorAll('.service-card, .extra-card, .treatment-item, .intro, .section-heading, .promise-section').forEach(el => {
+  el.classList.add('reveal')
+  observer.observe(el)
+})

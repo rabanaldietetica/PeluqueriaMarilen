@@ -1,0 +1,10 @@
+{
+  "template": "VITE_VANILLA_TYPESCRIPT",
+  "sourceKind": "NEW_VITE_VANILLA_TYPESCRIPT",
+  "buildScript": "build",
+  "webDir": "dist",
+  "capacitorVersion": "8.5.0",
+  "syncState": "SYNCED",
+  "sourceStamp": 4097179990660330255,
+  "updatedAt": 1792258981739
+}
